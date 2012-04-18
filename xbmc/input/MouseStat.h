@@ -32,18 +32,26 @@
 #define XBMC_BUTTON_WHEELDOWN	5
 #define XBMC_BUTTON_X1		6
 #define XBMC_BUTTON_X2		7
+#define XBMC_BUTTON_X3		8
+#define XBMC_BUTTON_X4		9
 #define XBMC_BUTTON_LMASK	XBMC_BUTTON(XBMC_BUTTON_LEFT)
 #define XBMC_BUTTON_MMASK	XBMC_BUTTON(XBMC_BUTTON_MIDDLE)
 #define XBMC_BUTTON_RMASK	XBMC_BUTTON(XBMC_BUTTON_RIGHT)
 #define XBMC_BUTTON_X1MASK	XBMC_BUTTON(XBMC_BUTTON_X1)
 #define XBMC_BUTTON_X2MASK	XBMC_BUTTON(XBMC_BUTTON_X2)
+#define XBMC_BUTTON_X3MASK	XBMC_BUTTON(XBMC_BUTTON_X3)
+#define XBMC_BUTTON_X4MASK	XBMC_BUTTON(XBMC_BUTTON_X4)
 
 #define MOUSE_MINIMUM_MOVEMENT 2
 #define MOUSE_DOUBLE_CLICK_LENGTH 500L
 #define MOUSE_ACTIVE_LENGTH   5000L
 
 enum MOUSE_STATE { MOUSE_STATE_NORMAL = 1, MOUSE_STATE_FOCUS, MOUSE_STATE_DRAG, MOUSE_STATE_CLICK };
-enum MOUSE_BUTTON { MOUSE_LEFT_BUTTON = 0, MOUSE_RIGHT_BUTTON, MOUSE_MIDDLE_BUTTON, MOUSE_EXTRA_BUTTON1, MOUSE_EXTRA_BUTTON2 };
+enum MOUSE_BUTTON { MOUSE_LEFT_BUTTON = 0, MOUSE_RIGHT_BUTTON, MOUSE_MIDDLE_BUTTON,
+                    MOUSE_EXTRA_BUTTON1, MOUSE_EXTRA_BUTTON2,
+                    MOUSE_EXTRA_BUTTON3, MOUSE_EXTRA_BUTTON4,
+                    MOUSE_BUTTONS_NUM
+};
 
 // this holds everything we know about the current state of the mouse
 struct MouseState
@@ -53,7 +61,7 @@ struct MouseState
   int16_t dx;         // change in x
   int16_t dy;         // change in y
   char dz;            // change in z (wheel)
-  bool button[5];     // current state of the buttons
+  bool button[MOUSE_BUTTONS_NUM];    // true if a button is down
   bool active;        // true if the mouse is active
 };
 
@@ -126,7 +134,7 @@ private:
   private:
     static const unsigned int click_confines = 5;        ///< number of pixels that the pointer may move while the button is down to trigger a click
     static const unsigned int short_click_time = 1000;   ///< time for mouse down/up to trigger a short click rather than a long click
-    static const unsigned int double_click_time = 500;   ///< time for mouse down following a short click to trigger a double click
+    static const unsigned int double_click_time = 300;   ///< time for mouse down following a short click to trigger a double click
 
     bool InClickRange(int x, int y) const;
 
@@ -154,7 +162,7 @@ private:
   MOUSE_STATE m_pointerState;
   MouseState m_mouseState;
   bool m_mouseEnabled;
-  CButtonState m_buttonState[5];
+  CButtonState m_buttonState[MOUSE_BUTTONS_NUM];
 
   int m_maxX;
   int m_maxY;
@@ -164,9 +172,9 @@ private:
   // active/click timers
   unsigned int m_lastActiveTime;
 
-  bool bClick[5];
-  bool bDoubleClick[5];
-  int  bHold[5];
+  bool bClick[MOUSE_BUTTONS_NUM];
+  bool bDoubleClick[MOUSE_BUTTONS_NUM];
+  int  bHold[MOUSE_BUTTONS_NUM];
 
   uint32_t m_Action;
 };
