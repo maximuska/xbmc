@@ -185,17 +185,6 @@
 #define ACTION_MUTE                 91
 #define ACTION_NAV_BACK             92
 
-#define ACTION_MOUSE_START            100
-#define ACTION_MOUSE_LEFT_CLICK       100
-#define ACTION_MOUSE_RIGHT_CLICK      101
-#define ACTION_MOUSE_MIDDLE_CLICK     102
-#define ACTION_MOUSE_DOUBLE_CLICK     103
-#define ACTION_MOUSE_WHEEL_UP         104
-#define ACTION_MOUSE_WHEEL_DOWN       105
-#define ACTION_MOUSE_DRAG             106
-#define ACTION_MOUSE_MOVE             107
-#define ACTION_MOUSE_END              109
-
 #define ACTION_BACKSPACE          110
 #define ACTION_SCROLL_UP          111
 #define ACTION_SCROLL_DOWN        112
@@ -295,6 +284,22 @@
 #define ACTION_VSHIFT_DOWN            228 // shift down video image in DVDPlayer
 
 #define ACTION_PLAYER_PLAYPAUSE       229 // Play/pause. If playing it pauses, if paused it plays.
+
+//TODO: replace by enum
+#define ACTION_MOUSE_START            300
+#define ACTION_MOUSE_LEFT_CLICK       300
+#define ACTION_MOUSE_RIGHT_CLICK      301
+#define ACTION_MOUSE_MIDDLE_CLICK     302
+#define ACTION_MOUSE_DOUBLE_CLICK     303
+#define ACTION_MOUSE_X1_CLICK         304
+#define ACTION_MOUSE_X2_CLICK         305
+#define ACTION_MOUSE_X3_CLICK         306
+#define ACTION_MOUSE_X4_CLICK         307
+#define ACTION_MOUSE_WHEEL_UP         308
+#define ACTION_MOUSE_WHEEL_DOWN       309
+#define ACTION_MOUSE_DRAG             310
+#define ACTION_MOUSE_MOVE             311
+#define ACTION_MOUSE_END              312
 
 // The NOOP action can be specified to disable an input event. This is
 // useful in user keyboard.xml etc to disable actions specified in the

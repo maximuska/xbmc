@@ -63,6 +63,8 @@ void CMouseStat::HandleEvent(XBMC_Event& newEvent)
     if (newEvent.button.button == XBMC_BUTTON_MIDDLE) m_mouseState.button[MOUSE_MIDDLE_BUTTON] = true;
     if (newEvent.button.button == XBMC_BUTTON_X1) m_mouseState.button[MOUSE_EXTRA_BUTTON1] = true;
     if (newEvent.button.button == XBMC_BUTTON_X2) m_mouseState.button[MOUSE_EXTRA_BUTTON2] = true;
+    if (newEvent.button.button == XBMC_BUTTON_X3) m_mouseState.button[MOUSE_EXTRA_BUTTON3] = true;
+    if (newEvent.button.button == XBMC_BUTTON_X4) m_mouseState.button[MOUSE_EXTRA_BUTTON4] = true;
     if (newEvent.button.button == XBMC_BUTTON_WHEELUP) m_mouseState.dz = 1;
     if (newEvent.button.button == XBMC_BUTTON_WHEELDOWN) m_mouseState.dz = -1;
   }
@@ -73,6 +75,8 @@ void CMouseStat::HandleEvent(XBMC_Event& newEvent)
     if (newEvent.button.button == XBMC_BUTTON_MIDDLE) m_mouseState.button[MOUSE_MIDDLE_BUTTON] = false;
     if (newEvent.button.button == XBMC_BUTTON_X1) m_mouseState.button[MOUSE_EXTRA_BUTTON1] = false;
     if (newEvent.button.button == XBMC_BUTTON_X2) m_mouseState.button[MOUSE_EXTRA_BUTTON2] = false;
+    if (newEvent.button.button == XBMC_BUTTON_X3) m_mouseState.button[MOUSE_EXTRA_BUTTON3] = false;
+    if (newEvent.button.button == XBMC_BUTTON_X4) m_mouseState.button[MOUSE_EXTRA_BUTTON4] = false;
     if (newEvent.button.button == XBMC_BUTTON_WHEELUP) m_mouseState.dz = 0;
     if (newEvent.button.button == XBMC_BUTTON_WHEELDOWN) m_mouseState.dz = 0;
   }
@@ -82,7 +86,7 @@ void CMouseStat::HandleEvent(XBMC_Event& newEvent)
   uint32_t now = CTimeUtils::GetFrameTime();
   bool bNothingDown = true;
   
-  for (int i = 0; i < 5; i++)
+  for (int i = 0; i < MOUSE_BUTTONS_NUM; i++)
   {
     bClick[i] = false;
     bDoubleClick[i] = false;
@@ -122,6 +126,14 @@ void CMouseStat::HandleEvent(XBMC_Event& newEvent)
     m_Action = ACTION_MOUSE_RIGHT_CLICK;
   else if (bClick[MOUSE_MIDDLE_BUTTON])
     m_Action = ACTION_MOUSE_MIDDLE_CLICK;
+  else if (bClick[MOUSE_EXTRA_BUTTON1])
+    m_Action = ACTION_MOUSE_X1_CLICK;
+  else if (bClick[MOUSE_EXTRA_BUTTON2])
+    m_Action = ACTION_MOUSE_X2_CLICK;
+  else if (bClick[MOUSE_EXTRA_BUTTON3])
+    m_Action = ACTION_MOUSE_X3_CLICK;
+  else if (bClick[MOUSE_EXTRA_BUTTON4])
+    m_Action = ACTION_MOUSE_X4_CLICK;
 
   // The bDoubleClick array is set true if CButtonState::Update spots a
   // button down within double_click_time (500ms) of the last click
