@@ -9,6 +9,7 @@
     #include <string.h>
     #include "goomsl.h"
     #include "goomsl_private.h"
+    #include "goomsl_yacc.h"
 
 #define STRUCT_ALIGNMENT 16
 /* #define VERBOSE  */
