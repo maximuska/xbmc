@@ -4,7 +4,11 @@
       <leftclick>leftclick</leftclick>
       <middleclick>middleclick</middleclick>
       <rightclick>rightclick</rightclick>
-      <doubleclick>doubleclick</doubleclick>
+      <x1click>VolumeDown</x1click>
+      <x2click>VolumeUp</x2click>
+      <x3click>ActivateWindow(shutdownmenu)</x3click>
+      <x4click>x4click</x4click>
+      <doubleclick>ToggleFullScreen</doubleclick>
       <wheeldown>wheeldown</wheeldown>
       <wheelup>wheelup</wheelup>
       <mousedrag>mousedrag</mousedrag>
@@ -19,4 +23,17 @@
       <wheeldown>NextPicture</wheeldown>
     </mouse>
   </SlideShow>
+  <FullscreenVideo>
+    <mouse>
+      <leftclick>pause</leftclick>
+      <x4click>CodecInfo</x4click>
+    </mouse>
+  </FullscreenVideo>
+  <VideoOSD>
+    <mouse>
+      <wheeldown>VolumeDown</wheeldown>
+      <wheelup>VolumeUp</wheelup>
+      <x4click>CodecInfo</x4click>
+    </mouse>
+  </VideoOSD>
 </keymap>
